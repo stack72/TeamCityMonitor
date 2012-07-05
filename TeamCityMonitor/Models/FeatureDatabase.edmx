@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ApplicationDataModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ApplicationDataModelStoreContainer">
+          <EntitySet Name="FeatureMessages" EntityType="ApplicationDataModel.Store.FeatureMessages" store:Type="Tables" />
+          <EntitySet Name="FeatureSwitches" EntityType="ApplicationDataModel.Store.FeatureSwitches" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="FeatureMessages">
+          <Key>
+            <PropertyRef Name="FeatureMessageId" />
+          </Key>
+          <Property Name="FeatureMessageId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+        </EntityType>
+        <EntityType Name="FeatureSwitches">
+          <Key>
+            <PropertyRef Name="FeatureSwitchId" />
+          </Key>
+          <Property Name="FeatureName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="FeatureSwitchId" Type="int" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApplicationDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ApplicationDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FeatureSwitches" EntityType="ApplicationDataModel.FeatureSwitch" />
+          <EntitySet Name="FeatureMessages" EntityType="ApplicationDataModel.FeatureMessage" />
+        </EntityContainer>
+        <EntityType Name="FeatureSwitch">
+          <Key>
+            <PropertyRef Name="FeatureSwitchId" />
+          </Key>
+          <Property Name="FeatureName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="FeatureSwitchId" Type="Int32" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeatureMessage">
+          <Key>
+            <PropertyRef Name="FeatureMessageId" />
+          </Key>
+          <Property Type="Int32" Name="FeatureMessageId" Nullable="false" />
+          <Property Type="Int32" Name="FeatureId" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="2048" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApplicationDataModelStoreContainer" CdmEntityContainer="ApplicationDataEntities">
+          <EntitySetMapping Name="FeatureSwitches">
+            <EntityTypeMapping TypeName="ApplicationDataModel.FeatureSwitch">
+              <MappingFragment StoreEntitySet="FeatureSwitches">
+                <ScalarProperty Name="FeatureName" ColumnName="FeatureName" />
+                <ScalarProperty Name="FeatureSwitchId" ColumnName="FeatureSwitchId" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeatureMessages">
+            <EntityTypeMapping TypeName="ApplicationDataModel.FeatureMessage">
+              <MappingFragment StoreEntitySet="FeatureMessages">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="FeatureId" ColumnName="FeatureId" />
+                <ScalarProperty Name="FeatureMessageId" ColumnName="FeatureMessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FeatureDatabase">
+        <EntityTypeShape EntityType="ApplicationDataModel.FeatureSwitch" Width="1.5" PointX="6.125" PointY="0.875" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationDataModel.FeatureMessage" Width="1.5" PointX="3.375" PointY="0.75" Height="1.59568359375" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
