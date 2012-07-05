@@ -12,7 +12,7 @@ namespace BuildMonitor.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace BuildMonitor.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("teamcity.codebetter.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost:81")]
         public string TeamCityURL {
             get {
                 return ((string)(this["TeamCityURL"]));
@@ -34,7 +34,7 @@ namespace BuildMonitor.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("teamcitysharpuser")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
         public string TeamCityUser {
             get {
                 return ((string)(this["TeamCityUser"]));
@@ -61,7 +61,7 @@ namespace BuildMonitor.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool ShowFailedBuildsOnly {
             get {
                 return ((bool)(this["ShowFailedBuildsOnly"]));
