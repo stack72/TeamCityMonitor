@@ -1,0 +1,26 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Add new feature", "Create")
+
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Feature Name</th>
+            <th>Enabled</th>
+            @foreach (var feature in Model)
+            {
+                <tr>
+                    <td>@feature.FeatureId</td>
+                    <td>@feature.FeatureName</td>
+                    <td>@feature.Enabled</td>
+                </tr>
+            }
+        </tr>
+    </table>
+}
