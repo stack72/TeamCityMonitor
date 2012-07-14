@@ -10,3 +10,4 @@ output
 *.TeamCityMonitor.sln.metaproj*
 *.DotSettings.*
 nuget
+*.publish.xml
