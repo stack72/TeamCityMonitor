@@ -6,7 +6,7 @@ namespace BuildMonitor.Areas.Admin.Controllers
 {
     public class MessagesController : Controller
     {
-        private IMessageRepository _messageRepository;
+        private readonly IMessageRepository _messageRepository;
         public MessagesController()
         {
             _messageRepository = new MessageRepository();
@@ -31,16 +31,8 @@ namespace BuildMonitor.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Message message)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _messageRepository.Create(message);
+            return RedirectToAction("Index");
         }
         
         public ActionResult Edit(int id)
@@ -52,16 +44,8 @@ namespace BuildMonitor.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Message message)
         {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _messageRepository.Update(message);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
@@ -73,16 +57,8 @@ namespace BuildMonitor.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(Message message)
         {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            _messageRepository.Delete(message);
+            return RedirectToAction("Index");
         }
     }
 }

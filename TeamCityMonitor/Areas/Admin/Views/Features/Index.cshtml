@@ -10,21 +10,19 @@
 {
     <table>
         <tr>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-            <th>Id</th>
             <th>Feature Name</th>
             <th>Enabled</th>
+            <th></th>
             @foreach (var feature in Model)
             {
                 <tr>
-                    <td><a href="@Url.Action("Delete", new { id = feature.FeatureId})">Delete</a></td>
-                    <td><a href="@Url.Action("Details", new { id = feature.FeatureId})">Details</a></td>
-                    <td><a href="@Url.Action("Edit", new { id = feature.FeatureId})">Edit</a></td>
-                    <td>@feature.FeatureId</td>
                     <td>@feature.FeatureName</td>
                     <td>@feature.Enabled</td>
+                    <td>
+                        <a href="@Url.Action("Delete", new { id = feature.FeatureId})">Delete</a>
+                        <a href="@Url.Action("Details", new { id = feature.FeatureId})">Details</a>
+                        <a href="@Url.Action("Edit", new { id = feature.FeatureId})">Edit</a>
+                    </td>
                 </tr>
             }
         </tr>
