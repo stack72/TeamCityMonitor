@@ -1,17 +1,26 @@
 ﻿using System.Web.Mvc;
+using BuildMonitor.Models;
+using BuildMonitor.Models.Repository;
 
 namespace BuildMonitor.Areas.Admin.Controllers
 {
     public class MessagesController : Controller
     {
+        private IMessageRepository _messageRepository;
+        public MessagesController()
+        {
+            _messageRepository = new MessageRepository();
+        }
         public ActionResult Index()
         {
-            return View();
+            var messages = _messageRepository.GetAllMessages();
+            return View(messages);
         }
 
         public ActionResult Details(int id)
         {
-            return View();
+            var message = _messageRepository.GetMessage(id);
+            return View(message);
         }
 
         public ActionResult Create()
@@ -20,7 +29,7 @@ namespace BuildMonitor.Areas.Admin.Controllers
         } 
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Message message)
         {
             try
             {
@@ -34,19 +43,14 @@ namespace BuildMonitor.Areas.Admin.Controllers
             }
         }
         
-        //
-        // GET: /Admin/Messages/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            return View();
+            var message = _messageRepository.GetMessage(id);
+            return View(message);
         }
 
-        //
-        // POST: /Admin/Messages/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Message message)
         {
             try
             {
@@ -60,19 +64,14 @@ namespace BuildMonitor.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Messages/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
+            var message = _messageRepository.GetMessage(id);
+            return View(message);
         }
 
-        //
-        // POST: /Admin/Messages/Delete/5
-
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Message message)
         {
             try
             {

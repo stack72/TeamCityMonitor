@@ -1,0 +1,25 @@
+﻿@model BuildMonitor.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">MessageName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MessageName)
+    </div>
+
+    <div class="display-label">MessageDetails</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MessageDetails)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MessageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
