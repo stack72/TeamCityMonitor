@@ -7,9 +7,9 @@ namespace BuildMonitor.Areas.Admin.Controllers
     public class MessagesController : Controller
     {
         private readonly IMessageRepository _messageRepository;
-        public MessagesController()
+        public MessagesController(IMessageRepository messageRepository)
         {
-            _messageRepository = new MessageRepository();
+            _messageRepository = messageRepository;
         }
         public ActionResult Index()
         {

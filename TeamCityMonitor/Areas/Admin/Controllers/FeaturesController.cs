@@ -7,9 +7,9 @@ namespace BuildMonitor.Areas.Admin.Controllers
     public class FeaturesController : Controller
     {
         private readonly IFeatureRepository _featureRepository;
-        public FeaturesController()
+        public FeaturesController(IFeatureRepository featureRepository)
         {
-            _featureRepository = new FeatureRepository();
+            _featureRepository = featureRepository;
         }
 
         public ActionResult Index()

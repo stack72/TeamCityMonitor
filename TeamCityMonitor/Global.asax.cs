@@ -1,11 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using System.Reflection;
+using System.Web.Mvc;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
+using BuildMonitor.Models.Repository;
 
 namespace BuildMonitor
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : System.Web.HttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -27,6 +28,11 @@ namespace BuildMonitor
 
         protected void Application_Start()
         {
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterModule(new RepositoriesModule());
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(builder.Build()));
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);

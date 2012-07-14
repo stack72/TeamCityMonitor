@@ -48,7 +48,7 @@ namespace BuildMonitor.Models.Repository
 
         public Message GetMessage(string messageName)
         {
-            return GetDatabase().Feature.FindByMessageName(messageName);
+            return GetDatabase().Messages.FindByMessageName(messageName);
         }
 
         public void Create(Message message)
