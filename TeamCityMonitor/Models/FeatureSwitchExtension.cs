@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using BuildMonitor.Models.Repository;
 
 namespace BuildMonitor.Models
 {
@@ -6,20 +7,10 @@ namespace BuildMonitor.Models
     {
         public static bool FeatureSwitchEnabled(this HtmlHelper helper, string featureName)
         {
-            var featureManager = new FeatureManager();
+            var featureManager = new FeatureRepository();
+            var feature = featureManager.GetFeature(featureName);
 
-            return featureManager.IsFeatureEnabled(featureName);
+            return feature.Enabled;
         }
     }
-
-    public static class MessageExtension
-    {
-        public static string GetMessage(this HtmlHelper helper, string messageName)
-        {
-            var featureManager = new FeatureManager();
-
-            return featureManager.GetSwitchSetting(messageName);
-        }
-    }
-
 }

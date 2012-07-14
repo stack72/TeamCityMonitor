@@ -17,7 +17,7 @@ namespace BuildMonitor.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller="Home", action = "Index", id = UrlParameter.Optional }
+                new { controller="Features", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

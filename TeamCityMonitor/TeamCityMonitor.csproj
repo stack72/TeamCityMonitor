@@ -90,17 +90,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FeaturesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessagesController.cs" />
     <Compile Include="Attributes\DisableCaching.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Feature.cs" />
-    <Compile Include="Models\FeatureManager.cs" />
     <Compile Include="Models\FeatureSwitchExtension.cs" />
-    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\Repository\FeatureRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -178,8 +178,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Features\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Features\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Features\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Features\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Features\Delete.cshtml" />
     <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
     <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
     <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
@@ -201,7 +204,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

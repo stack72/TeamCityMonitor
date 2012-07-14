@@ -1,0 +1,25 @@
+﻿@model BuildMonitor.Models.Feature
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Feature</legend>
+
+    <div class="display-label">FeatureName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FeatureName)
+    </div>
+
+    <div class="display-label">Enabled</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Enabled)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FeatureId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

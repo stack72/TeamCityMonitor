@@ -1,66 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using BuildMonitor.Models;
-using Simple.Data;
+﻿using System.Web.Mvc;
 
 namespace BuildMonitor.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class MessagesController : Controller
     {
-        //
-        // GET: /Admin/Default1/
-
-        private dynamic GetDatabase()
-        {
-            var dbFile = Server.MapPath("~/App_Data/ApplicationData.db");
-            var db = Database.OpenFile(dbFile);
-
-            return db;
-        }
-
         public ActionResult Index()
         {
-            var features = GetDatabase().Feature.All();
-            return View(features);
+            return View();
         }
-
-        //
-        // GET: /Admin/Default1/Details/5
 
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        //
-        // GET: /Admin/Default1/Create
-
         public ActionResult Create()
         {
             return View();
         } 
 
-        //
-        // POST: /Admin/Default1/Create
-
         [HttpPost]
-        public ActionResult Create(Feature feature)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
+                // TODO: Add insert logic here
 
-                GetDatabase().Feature.Insert(FeatureName: feature.FeatureName, Enabled: feature.Enabled);
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch
             {
                 return View();
             }
         }
         
         //
-        // GET: /Admin/Default1/Edit/5
+        // GET: /Admin/Messages/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -68,7 +43,7 @@ namespace BuildMonitor.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/Default1/Edit/5
+        // POST: /Admin/Messages/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -76,7 +51,6 @@ namespace BuildMonitor.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
-
  
                 return RedirectToAction("Index");
             }
@@ -87,7 +61,7 @@ namespace BuildMonitor.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Default1/Delete/5
+        // GET: /Admin/Messages/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -95,7 +69,7 @@ namespace BuildMonitor.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/Default1/Delete/5
+        // POST: /Admin/Messages/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
