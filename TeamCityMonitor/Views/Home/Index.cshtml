@@ -29,7 +29,7 @@
         projectsViewModel = {
             projects: ko.observableArray([]),
             loadProjects: function () {
-                var url = "/Home/GetProjects/";
+                var url = '@Url.Action("GetProjects")';
                 $.ajax({
                     url: url,
                     success: function (response) {
