@@ -47,7 +47,7 @@ namespace BuildMonitor.Repository
                                 ProjectId = proj.Id,
                                 BuildConfigName = currentConfig.Name,
                                 LastBuildTime = build.StartDate.ToString("dd/MM/yyyy HH:mm:ss"),
-                                LastBuildStatus = build.Status,
+                                LastBuildStatus = build.Status == null ? "unknown" : build.Status,  //sometimes the build status is null on projects new projects with zero builds
                                 LastBuildStatusText = build.StatusText
                             };
                             if (Properties.Settings.Default.ShowFailedBuildsOnly)
